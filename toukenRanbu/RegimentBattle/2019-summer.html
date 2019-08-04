@@ -325,7 +325,6 @@
                 "endDate": '2019-08-27'
             };
             var currentAmountEl = $('#currentAmount');
-            var addAmountEl = $('#addAmount');
             var awardProgressEl = $('#awardProgress');
             var highlightCookie = $.cookie('toukenRanbuRegimentBattleHLArray');
             var highlightCookieArray = [];
@@ -346,6 +345,32 @@
                     highlightCookieArray[i] = parseInt(v);
                 });
             }
+
+            $.each(period, function(i, v){
+                $('#' + i).text(v);
+            });
+            createList();
+            currentAmountEl.val($.cookie('toukenRanbuRegimentBattleAmount'));
+            currentAmountEl.change(function() {
+                var currentAmount = $(this).val();
+                var diffDays = getDiffDays();
+                $.each(awards, function(i, v){
+                    var targetAmount = v['amount'];
+                    var numbers = getNumbers(targetAmount, currentAmount, diffDays);
+                    var entry = $('.progress[data-target="' + targetAmount + '"]');
+                    $('.progress-bar', entry).css('width', numbers['percentage'] + '%');
+                    $('.text sub', entry).text(numbers['percentage'] + '%');
+                    $('.daily', entry).html(numbers['dailyText']);
+                });
+                $.cookie('toukenRanbuRegimentBattleAmount', currentAmount, {expires: 30});
+            });
+            $('#addAmount').change(function(){
+                var currentAmount = (currentAmountEl.val() == '' ? 0 : parseInt(currentAmountEl.val()))
+                var newCurrentAmount = parseInt($(this).val()) + currentAmount;
+                currentAmountEl.val(newCurrentAmount);
+                currentAmountEl.trigger('change');
+                $(this).val('');
+            });
             
             function createList () {
                 var currentAmount = currentAmountEl.val();
@@ -392,42 +417,13 @@
                 var percentage = Math.round(currentAmount / targetAmount * 100);
                 percentage = (percentage > 100) ? 100 : percentage;
                 var dailyAmount = Math.floor((targetAmount - currentAmount) / diffDays);
-                var dailyText = (dailyAmount > 0)
-                                ? '每天至少需 ' + numberWithCommas(dailyAmount) + ' 貝'
-                                : '<span class="text-white">Get!</span>';
+                var dailyText = (dailyAmount > 0) ? ('每天至少需 ' + numberWithCommas(dailyAmount) + ' 貝') : '<span class="text-white">Get!</span>';
                 var numbers = {
                     'percentage': percentage,
                     'dailyText': dailyText
                 }
                 return numbers;
             }
-            
-            $.each(period, function(i, v){
-                $('#' + i).text(v);
-            });
-            currentAmountEl.val($.cookie('toukenRanbuRegimentBattleAmount'));
-            createList();
-            currentAmountEl.change(function() {
-                var currentAmount = $(this).val();
-                var diffDays = getDiffDays();
-                $.each(awards, function(i, v){
-                    var targetAmount = v['amount'];
-                    var numbers = getNumbers(targetAmount, currentAmount, diffDays);
-                    var entry = $('.progress[data-target="' + targetAmount + '"]');
-                    $('.progress-bar', entry).css('width', numbers['percentage'] + '%');
-                    $('.text sub', entry).text(numbers['percentage'] + '%');
-                    $('.daily', entry).html(numbers['dailyText']);
-                });
-                $.cookie('toukenRanbuRegimentBattleAmount', currentAmount, {expires: 30});
-            });
-            addAmountEl.change(function(){
-                console.log(currentAmountEl.val());
-                var currentAmount = (currentAmountEl.val() == '' ? 0 : parseInt(currentAmountEl.val()))
-                var newCurrentAmount = parseInt($(this).val()) + currentAmount;
-                currentAmountEl.val(newCurrentAmount);
-                currentAmountEl.trigger('change');
-                $(this).val('');
-            });
         </script>
     </body>
 </html>
