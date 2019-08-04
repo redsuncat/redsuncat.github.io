@@ -335,6 +335,9 @@
             }
             else {
                 highlightCookieArray = highlightCookie.split(',');
+                $.each(highlightCookieArray, function(i, v) {
+                    highlightCookieArray[i] = parseInt(v);
+                });
             }
             
             function createList () {
