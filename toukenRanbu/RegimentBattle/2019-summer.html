@@ -2,24 +2,26 @@
     <head>
         <title>刀剣乱舞 - 連隊戦 - 海辺の陣 2019 活動進度表 - 阿貓工具箱</title>
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-        <link rel="stylesheet" href="css/toukenRanbuRegimentBattle.css">
+        <link rel="stylesheet" href="css/regimentBattle.css">
+        <link rel="stylesheet" href="css/2019-summer.css">
     </head>
     <body>
         <div class="container text-center mt-5">
-            <h1>刀剣乱舞 - 連隊戦 - 海辺の陣 2019 活動進度表</h1>
-            <h2><span id="startDate"></span> ~ <span id="endDate"></span></h2>
-            <div class="d-flex justify-content-center">
-                <div class="input-group mb-5 mt-5 col-lg-6 col-md-8 col-sm-12">
+            <h1>2019 海辺の陣</h1>
+            <h2>活動進度表</h2>
+            <h3><span id="startDate"></span> ~ <span id="endDate"></span></h3>
+            <div class="row justify-content-center">
+                <div class="input-group mb-md-5 mt-md-5 mt-3 col-lg-4 col-md-8 col-sm-12">
                     <div class="input-group-prepend">
                         <span class="input-group-text">目前貝數</span>
                     </div>
                     <input type="text" id="currentAmount" class="form-control" placeholder="請輸入數字" aria-label="currentAmount" />
                 </div>
-                <div class="input-group mb-5 mt-5 col-3">
+                <div class="input-group mb-md-5 mt-md-5 mt-3 mb-3 col-lg-2 col-md-4 col-sm-12">
                     <div class="input-group-prepend">
                         <span class="input-group-text">+</span>
                     </div>
-                    <input type="text" id="addAmount" class="form-control" aria-label="addAmount" />
+                    <input type="text" id="addAmount" class="form-control" aria-label="addAmount" placeholder="單場取得貝" />
                 </div>
             </div>
             <ul id="awardProgress" class="awardProgress p-0"></ul>
@@ -325,6 +327,7 @@
             var highlightCookieArray = [];
 
             if (highlightCookie == undefined) {
+                var highlightArray = [];
                 $.each(awards, function(i, v) {
                     if (v['highlight'] == true) {
                         highlightArray.push(v['amount']);
