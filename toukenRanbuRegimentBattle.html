@@ -321,17 +321,20 @@
             var currentAmountEl = $('#currentAmount');
             var addAmountEl = $('#addAmount');
             var awardProgressEl = $('#awardProgress');
-            var highlightCookieArray = $.cookie('toukenRanbuRegimentBattleHLArray');
+            var highlightCookie = $.cookie('toukenRanbuRegimentBattleHLArray');
+            var highlightCookieArray = [];
 
-            if (highlightCookieArray == undefined) {
-                var highlightArray = [];
+            if (highlightCookie == undefined) {
                 $.each(awards, function(i, v) {
                     if (v['highlight'] == true) {
                         highlightArray.push(v['amount']);
                     }
                 });
                 highlightCookieArray = highlightArray;
-                $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray);
+                $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
+            }
+            else {
+                highlightCookieArray = highlightCookie.split(',');
             }
             
             function createList () {
@@ -362,7 +365,7 @@
                     else {
                         highlightCookieArray.push(targetAmount);
                     }
-                    $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray);
+                    $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
                 });
             }
             function numberWithCommas(number) {
@@ -405,7 +408,7 @@
                     $('.text sub', entry).text(numbers['percentage'] + '%');
                     $('.daily', entry).html(numbers['dailyText']);
                 });
-                $.cookie('toukenRanbuRegimentBattleAmount', currentAmount);
+                $.cookie('toukenRanbuRegimentBattleAmount', currentAmount, {expires: 30});
             });
             addAmountEl.change(function(){
                 console.log(currentAmountEl.val());
