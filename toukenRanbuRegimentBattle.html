@@ -344,7 +344,7 @@
                     var targetAmount = v['amount'];
                     var numbers = getNumbers(targetAmount, currentAmount, diffDays);
                     var html = 
-                    '<li class="progress mb-3 d-flex' + ((highlightCookieArray.includes(v['highlight'])) ? ' hl' : '') + '" data-target="' + targetAmount + '">' +
+                    '<li class="progress mb-3 d-flex' + ((highlightCookieArray.includes(v['amount'])) ? ' hl' : '') + '" data-target="' + targetAmount + '">' +
                         '<div class="progress-bar pt-1 pb-1" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width: ' + numbers['percentage'] + '%;">' +
                             '<span class="text">' +
                                 '<sup class="mr-1">' + numberWithCommas(targetAmount) + '</sup>' +
