@@ -1,3 +1,40 @@
 body {
-    background: #000;
+    background: #F9F0DF;
+}
+.awardProgress {
+    margin:0;
+}
+.awardProgress li {
+    align-items: center;
+    background-color: rgba(255,255,255,.6);
+    border: 1px solid #d0c7b8;
+    cursor: pointer;
+    font-size: 1.2em;
+    height: auto;
+    position: relative;
+    transition: background-color .2s;
+}
+.awardProgress li.hl {
+    background-color: rgba(243, 144, 165, .1);
+}
+.awardProgress .progress-bar {
+    background-color: rgba(200, 195, 190, .5);
+    background-image: linear-gradient(to right, rgba(200, 195, 190, 0), rgba(200, 195, 190, 1));
+    color: #666;
+}
+.awardProgress li.hl .progress-bar{
+    background-color: rgba(243, 144, 165, .5);
+    background-image: linear-gradient(to right, rgba(243, 144, 165, 0), rgba(243, 144, 165, 1));
+    color: #64397E;
+}
+.awardProgress .text {
+    font-weight: bold;
+}
+.awardProgress .text sub {
+    font-weight: normal;
+}
+.awardProgress .daily {
+    font-size: .85em;
+    position: absolute;
+    right: .5rem;
 }
