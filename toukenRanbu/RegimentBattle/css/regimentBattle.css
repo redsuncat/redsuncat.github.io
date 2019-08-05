@@ -2,10 +2,10 @@ body {
     background: #F9F0DF;
     font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
 }
-.awardProgress {
+.rewardProgress {
     margin:0;
 }
-.awardProgress li {
+.rewardProgress li {
     align-items: center;
     background-color: rgba(255,255,255,.6);
     border: 1px solid #d0c7b8;
@@ -15,17 +15,17 @@ body {
     position: relative;
     transition: background-color .2s;
 }
-.awardProgress .text {
+.rewardProgress .text {
     padding-left: .5em;
 }
-.awardProgress .text sup {
+.rewardProgress .text sup {
     top: inherit;
 }
-.awardProgress .text sub {
+.rewardProgress .text sub {
     bottom: inherit;
     font-weight: normal;
 }
-.awardProgress .daily {
+.rewardProgress .daily {
     font-size: .85em;
     position: absolute;
     right: .5rem;
