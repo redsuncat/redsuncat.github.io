@@ -1,5 +1,6 @@
 body {
     background: #F9F0DF;
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
 }
 .awardProgress {
     margin:0;
@@ -15,9 +16,13 @@ body {
     transition: background-color .2s;
 }
 .awardProgress .text {
-    font-weight: bold;
+    padding-left: .5em;
+}
+.awardProgress .text sup {
+    top: inherit;
 }
 .awardProgress .text sub {
+    bottom: inherit;
     font-weight: normal;
 }
 .awardProgress .daily {
