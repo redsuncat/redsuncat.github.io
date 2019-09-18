@@ -1,0 +1,50 @@
+.overlay {
+    background-image: url("lion-805084_1920.jpg");
+    background-position: center center;
+    background-size: cover;
+    filter: blur(10px);
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 0;
+}
+.text-center {
+    position: relative;
+}
+h1 {
+    color: #fff;
+    text-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+a {
+    transition: color .2s;
+}
+.portrait img{
+    border: 3px solid #fff;
+    border-radius: 50%;
+    box-shadow: 0 0 5px rgba(0,0,0,.2);
+    max-width: 120px;
+}
+.portrait ~ .portrait {
+    margin-top: 4em;
+}
+.card {
+    background-color: rgba(255,255,255,.35);
+    transition-duration: .2s;
+    transition-property: background-color, opacity, box-shadow;
+}
+.card:hover {
+    background-color: rgba(255,255,255,1);
+    box-shadow: 2px 5px 5px rgba(0,0,0,.2);
+}
+.repo dl {
+    display: grid;
+    grid-template-columns: 6em auto 6em auto;
+}
+@media (min-width: 992px), (max-width: 768px) {
+
+    .repo dl {
+        grid-template-columns: 6em auto;
+    }
+}
