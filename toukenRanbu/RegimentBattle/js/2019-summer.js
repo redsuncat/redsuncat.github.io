@@ -293,6 +293,8 @@ var currentAmountEl = $('#currentAmount');
 var rewardProgressEl = $('#rewardProgress');
 var highlightCookie = $.cookie('toukenRanbuRegimentBattleHLArray');
 var highlightCookieArray = [];
+var today = new Date();
+var endDate = new Date(period['endDate']);
 
 if (highlightCookie == undefined) {
     var highlightArray = [];
@@ -336,7 +338,7 @@ $('#addAmount').change(function(){
     currentAmountEl.trigger('change');
     $(this).val('');
 });
-
+rewardProgressEl.after('<iframe class="likeCoin mt-2" data-v-36f4ac99="" src="https://button.like.co/in/embed/likercat/button?referrer=https://redsuncat.github.io/toukenRanbu/RegimentBattle/2019-summer.html" frameborder="0" />');
 function createList () {
     var currentAmount = currentAmountEl.val();
     var diffDays = getDiffDays();
@@ -382,7 +384,10 @@ function getNumbers (targetAmount, currentAmount, diffDays) {
     var percentage = Math.round(currentAmount / targetAmount * 100);
     percentage = (percentage > 100) ? 100 : percentage;
     var dailyAmount = Math.floor((targetAmount - currentAmount) / diffDays);
-    var dailyText = (dailyAmount > 0) ? ('每天至少需 ' + numberWithCommas(dailyAmount) + ' 貝') : '<span class="text-white">Get!</span>';
+    var dailyText = '';
+    if (today < endDate) {
+        dailyText = (dailyAmount > 0) ? ('每天至少需 ' + numberWithCommas(dailyAmount) + ' 貝') : '<span class="text-white">Get!</span>';
+    }
     var numbers = {
         'percentage': percentage,
         'dailyText': dailyText
