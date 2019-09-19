@@ -30,8 +30,8 @@ $(document).ready(function() {
 
     /* Finding Pets Part (Infinite Scroll) */
 
-    const renderedItems = 12
-    var lastItem = 0
+    const renderedAmount = 12
+    var lastItemNum = 0
     var windowHeight = $(window).innerHeight()
     var documentHeight = $(document).outerHeight()
 
@@ -52,19 +52,19 @@ $(document).ready(function() {
     $.getJSON('findingPets.json', function(){ 
         format: "json"
     }).done(function(petsData) {
-        renderPetsData(lastItem)
+        renderPetsData(lastItemNum)
 
         $(window).scroll(function() {
             clearTimeout($.data(this, 'scrollTimer'))
             $.data(this, 'scrollTimer', setTimeout(function() {
-                if ($(window).scrollTop() + windowHeight >= documentHeight) {
-                    renderPetsData(lastItem)
+                if (($(window).scrollTop() + windowHeight) >= documentHeight) {
+                    renderPetsData(lastItemNum)
                 }
             }, 250))
         })
 
         function renderPetsData (startItem) {
-            for (i = startItem; i < startItem + renderedItems; i++) {
+            for (i = startItem; i < (startItem + renderedAmount); i++) {
                 const pet = petsData[i]
                 const petCard = `
                 <div class="col-sm-12 col-md-6 col-lg-4"><div class="card mt-4">
@@ -95,7 +95,8 @@ $(document).ready(function() {
                 </div></div>`
                 $('#pets').append(petCard)
             }
-            lastItem = lastItem + renderedItems
+            // Update current last item number
+            lastItemNum = lastItemNum + renderedAmount
 
             // Recount `documentHeight`
             documentHeight = $(document).outerHeight()
