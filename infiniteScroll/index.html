@@ -29,6 +29,7 @@
         <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
         <script>
             $(document).ready(function() {
+                // Get Suncat's GitHub Repositories
                 $.ajax({
                     url: "https://api.github.com/users/redsuncat/repos",
                 }).done(function(response) {
@@ -54,6 +55,13 @@
                         </div></div>`
                         $('#repo').append(card);
                     });
+                });
+
+                // Get `Finding Pets` Government Open Data
+                $.ajax({
+                    url: "http://data.coa.gov.tw/Service/OpenData/TransService.aspx?UnitId=IFJomqVzyB0i",
+                }).done(function(response) {
+                    console.log(response);
                 });
             });
         </script>
