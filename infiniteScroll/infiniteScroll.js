@@ -30,10 +30,11 @@ $(document).ready(function() {
 
     /* Finding Pets Part (Infinite Scroll) */
 
-    const renderedAmount = 12
+    const renderedAmount = 3
     var lastItemNum = 0
     var windowHeight = $(window).innerHeight()
     var documentHeight = $(document).outerHeight()
+    const loadingContainer = $('#loading')
 
     $(window).resize(function(){
         windowHeight = $(window).innerHeight()
@@ -64,21 +65,28 @@ $(document).ready(function() {
         })
 
         function renderPetsData (startItem) {
-            for (i = startItem; i < (startItem + renderedAmount); i++) {
+            // Show Loading Container after second time rendering.
+            if (startItem > 0)
+                loadingContainer.addClass('show')
+            const stopItem = startItem + renderedAmount
+            var delayDuration = 200
+            var petCards = []
+            for (i = startItem; i < stopItem; i++) {
                 const pet = petsData[i]
-                const petCard = `
-                <div class="col-sm-12 col-md-6 col-lg-4"><div class="card mt-4">
+                const petCard = $('<div>').addClass('col-sm-12 col-md-6 col-lg-4').css('display', 'none')
+                const petCardContent = `
+                <div class="card mt-4">
                     <h5 class="card-header">
                         <span class="badge badge-secondary">${pet.寵物別}</span>
                         <span class="badge badge-secondary">${pet.品種}</span>
                         <span class="badge badge-secondary">${pet.外觀}</span>
-                        ${((pet.寵物名) ? pet.寵物名 : '(沒有名字)')}
+                        ${(pet.寵物名 ? pet.寵物名 : '(沒有名字)')}
                         ${((pet.性別 == '母') ? '<i class="fas fa-venus ml-1 text-danger"></i>' : '<i class="fas fa-mars ml-1 text-primary"></i>')}
                     </h5>
                     <div class="card-body">
-                        ${(pet.毛色) ? ('毛色：' + pet.毛色) : ''}
+                        ${pet.毛色 ? ('毛色：' + pet.毛色) : ''}
                         ${(pet.毛色 && pet.特徵) ? ' / ' : ''}
-                        ${(pet.特徵) ? ('特徵：' + pet.特徵) : ''}
+                        ${pet.特徵 ? ('特徵：' + pet.特徵) : ''}
                         ${(pet.毛色 || pet.特徵) ? '<hr />' : ''}
                         遺失於 ${pet.遺失時間}<br />
                         <i class="fas fa-map-marker-alt"></i> ${pet.遺失地點}
@@ -92,14 +100,24 @@ $(document).ready(function() {
                             ${(pet.EMail) ? ('<i class="fas fa-envelope"></i> ' + pet.連絡電話) : ''}
                         </span>
                     </div>
-                </div></div>`
+                </div>`
+                petCard.html(petCardContent)
                 $('#pets').append(petCard)
+                petCards.push(petCard)
+                petCard.delay(delayDuration).fadeIn()
+                delayDuration += delayDuration
             }
+
             // Update current last item number
             lastItemNum = lastItemNum + renderedAmount
 
             // Recount `documentHeight`
             documentHeight = $(document).outerHeight()
+
+            // Hide `loading` after all
+            setTimeout(() => {
+                loadingContainer.removeClass('show')
+            }, delayDuration)
         }
     })
 })
