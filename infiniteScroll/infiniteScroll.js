@@ -1,12 +1,17 @@
 $(document).ready(function() {
+    var gitHubDataLoaded = false
+    var petDataLoaded = false
+    
     /* Get Suncat's GitHub Repositories */
 
     $.ajax({
         url: "https://api.github.com/users/redsuncat/repos",
     }).done(function(response) {
+        var delayDuration = 200
         $.each(response, function(i, v){
-            const repoCard = `
-            <div class="col-lg-6"><div class="card mt-4">
+            const repoCard = $('<div>').addClass('col-lg-6').css('display', 'none')
+            const repoCardContent = `
+            <div class="card mt-4">
                 <h5 class="card-header d-flex align-items-center justify-content-between">
                     <a href="${v.url}" class="text-danger">${v.name}</a>
                     <a href="${v.url}" class="btn btn-danger">Link</a>
@@ -23,9 +28,14 @@ $(document).ready(function() {
                         <dd>${v.updated_at}</dd>
                     </dl>
                 </div>
-            </div></div>`
+            </div>`
+            repoCard.html(repoCardContent)
             $('#repo').append(repoCard)
+            repoCard.delay(delayDuration).fadeIn()
+            delayDuration += delayDuration
         })
+        gitHubDataLoaded = true
+        hideLoading()
     })
 
     /* Finding Pets Part (Infinite Scroll) */
@@ -34,7 +44,6 @@ $(document).ready(function() {
     var lastItemNum = 0
     var windowHeight = $(window).innerHeight()
     var documentHeight = $(document).outerHeight()
-    const loadingContainer = $('#loading')
 
     $(window).resize(function(){
         windowHeight = $(window).innerHeight()
@@ -73,12 +82,8 @@ $(document).ready(function() {
         }
 
         function renderPetsData (startItem) {
-            // Show Loading Container after second time rendering.
-            if (startItem > 0)
-                loadingContainer.removeClass('show').addClass('show')
             const stopItem = startItem + renderedAmount
             var delayDuration = 200
-            var petCards = []
             for (i = startItem; i < stopItem; i++) {
                 const pet = petsData[i]
                 const petCard = $('<div>').addClass('col-sm-12 col-md-6 col-lg-4').css('display', 'none')
@@ -111,7 +116,6 @@ $(document).ready(function() {
                 </div>`
                 petCard.html(petCardContent)
                 $('#pets').append(petCard)
-                petCards.push(petCard)
                 petCard.delay(delayDuration).fadeIn()
                 delayDuration += delayDuration
             }
@@ -121,11 +125,16 @@ $(document).ready(function() {
 
             // Recount `documentHeight`
             documentHeight = $(document).outerHeight()
-
-            // Hide `loading` after all
-            setTimeout(() => {
-                loadingContainer.removeClass('show')
-            }, 500)
         }
+
+        petDataLoaded = true
+        hideLoading()
     })
+
+    function hideLoading() {
+        if (gitHubDataLoaded && petDataLoaded)
+            $('#loading').fadeOut(1000, function(){
+                $(this).removeClass('d-flex')
+            })
+    }
 })
