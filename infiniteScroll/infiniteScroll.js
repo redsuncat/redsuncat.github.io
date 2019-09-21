@@ -30,7 +30,7 @@ $(document).ready(function() {
 
     /* Finding Pets Part (Infinite Scroll) */
 
-    const renderedAmount = 3
+    const renderedAmount = 6
     var lastItemNum = 0
     var windowHeight = $(window).innerHeight()
     var documentHeight = $(document).outerHeight()
@@ -56,18 +56,26 @@ $(document).ready(function() {
         renderPetsData(lastItemNum)
 
         $(window).scroll(function() {
+            detectScrollToBottom()
+        })
+
+        $(window).bind('touchmove', function(e) {
+            detectScrollToBottom()
+        })
+
+        function detectScrollToBottom () {
             clearTimeout($.data(this, 'scrollTimer'))
             $.data(this, 'scrollTimer', setTimeout(function() {
                 if (($(window).scrollTop() + windowHeight) >= documentHeight) {
                     renderPetsData(lastItemNum)
                 }
             }, 250))
-        })
+        }
 
         function renderPetsData (startItem) {
             // Show Loading Container after second time rendering.
             if (startItem > 0)
-                loadingContainer.addClass('show')
+                loadingContainer.removeClass('show').addClass('show')
             const stopItem = startItem + renderedAmount
             var delayDuration = 200
             var petCards = []
@@ -117,7 +125,7 @@ $(document).ready(function() {
             // Hide `loading` after all
             setTimeout(() => {
                 loadingContainer.removeClass('show')
-            }, delayDuration)
+            }, 500)
         }
     })
 })
