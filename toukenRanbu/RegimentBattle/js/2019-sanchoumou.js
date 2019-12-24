@@ -291,7 +291,7 @@ var period = {
 };
 var currentAmountEl = $('#currentAmount');
 var rewardProgressEl = $('#rewardProgress');
-var highlightCookie = $.cookie('toukenRanbuRegimentBattleHLArray');
+var highlightCookie = $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray');
 var highlightCookieArray = [];
 var today = new Date();
 var endDate = new Date(period['endDate']);
@@ -304,7 +304,7 @@ if (highlightCookie == undefined) {
         }
     });
     highlightCookieArray = highlightArray;
-    $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
+    $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray', highlightCookieArray, {expires: 30});
 }
 else {
     highlightCookieArray = highlightCookie.split(',');
@@ -367,7 +367,7 @@ function createList () {
         else {
             highlightCookieArray.push(targetAmount);
         }
-        $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
+        $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray', highlightCookieArray, {expires: 30});
     });
 }
 function numberWithCommas(number) {
