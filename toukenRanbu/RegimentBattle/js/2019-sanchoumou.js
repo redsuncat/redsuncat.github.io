@@ -1,7 +1,7 @@
 var rewards = [
     {
         "amount": 200000,
-        "reward": "北谷菜切",
+        "reward": "山鳥毛",
         "highlight": true
     },
     {
@@ -56,7 +56,7 @@ var rewards = [
     },
     {
         "amount": 100000,
-        "reward": "北谷菜切",
+        "reward": "山鳥毛",
         "highlight": true
     },
     {
@@ -71,12 +71,12 @@ var rewards = [
     },
     {
         "amount": 85000,
-        "reward": "手伝い札 × 2",
-        "highlight": ""
+        "reward": "三倍枡",
+        "highlight": true
     },
     {
         "amount": 80000,
-        "reward": "巴形薙刀",
+        "reward": "南泉一文字",
         "highlight": true
     },
     {
@@ -121,12 +121,12 @@ var rewards = [
     },
     {
         "amount": 52500,
-        "reward": "三倍魚籠",
+        "reward": "三倍枡",
         "highlight": true
     },
     {
         "amount": 50000,
-        "reward": "浦島虎徹",
+        "reward": "謙信景光",
         "highlight": true
     },
     {
@@ -156,127 +156,127 @@ var rewards = [
     },
     {
         "amount": 35000,
+        "reward": "三倍枡",
+        "highlight": true
+    },
+    {
+        "amount": 32500,
         "reward": "御札˙松",
         "highlight": ""
     },
     {
-        "amount": 32500,
+        "amount": 30000,
         "reward": "盾兵˙特上",
         "highlight": ""
     },
     {
-        "amount": 30000,
+        "amount": 27500,
         "reward": "旅装束",
         "highlight": ""
     },
     {
-        "amount": 27500,
+        "amount": 25000,
         "reward": "青毛",
         "highlight": ""
     },
     {
-        "amount": 25000,
+        "amount": 22500,
         "reward": "兵糧丸",
         "highlight": ""
     },
     {
-        "amount": 22500,
+        "amount": 20000,
         "reward": "槍兵˙特上",
         "highlight": ""
     },
     {
-        "amount": 20000,
+        "amount": 18000,
         "reward": "御札˙竹",
         "highlight": ""
     },
     {
-        "amount": 18000,
+        "amount": 16000,
         "reward": "精鋭兵˙特上",
         "highlight": ""
     },
     {
-        "amount": 16000,
-        "reward": "仙人団子",
-        "highlight": ""
-    },
-    {
         "amount": 14000,
-        "reward": "重騎兵˙特上",
-        "highlight": ""
+        "reward": "三倍枡",
+        "highlight": true
     },
     {
         "amount": 12000,
-        "reward": "御札˙梅",
+        "reward": "仙子団子",
         "highlight": ""
     },
     {
         "amount": 10000,
-        "reward": "采配",
+        "reward": "御札˙梅",
         "highlight": ""
     },
     {
         "amount": 9000,
-        "reward": "玉鋼 × 1000",
+        "reward": "采配",
         "highlight": ""
     },
     {
         "amount": 8000,
-        "reward": "砥石 × 1000",
+        "reward": "重騎兵˙特上",
         "highlight": ""
     },
     {
         "amount": 7000,
-        "reward": "冷却材 × 1000",
+        "reward": "玉鋼 × 1000",
         "highlight": ""
     },
     {
         "amount": 6000,
-        "reward": "木炭 × 1000",
+        "reward": "砥石 × 1000",
         "highlight": ""
     },
     {
         "amount": 5000,
-        "reward": "三倍魚籠",
-        "highlight": true
+        "reward": "冷却材 × 1000",
+        "highlight": ""
     },
     {
         "amount": 4000,
-        "reward": "遠征呼び戻し鳩",
+        "reward": "木炭 × 1000",
         "highlight": ""
     },
     {
         "amount": 3000,
-        "reward": "鹿毛",
-        "highlight": ""
+        "reward": "三倍枡",
+        "highlight": true
     },
     {
         "amount": 2000,
-        "reward": "重歩兵˙特上",
+        "reward": "遠征呼び戻し鳩",
         "highlight": ""
     },
     {
         "amount": 1000,
-        "reward": "手伝い札",
+        "reward": "鹿毛",
         "highlight": ""
     },
     {
         "amount": 750,
-        "reward": "軽騎兵˙特上",
+        "reward": "重歩兵˙特上",
         "highlight": ""
     },
     {
         "amount": 500,
-        "reward": "御札˙水砲",
+        "reward": "手伝の札",
         "highlight": ""
     },
     {
         "amount": 300,
-        "reward": "軽歩兵˙特上",
+        "reward": "依頼札",
         "highlight": ""
     },
     {
         "amount": 100,
-        "reward": "三倍魚籠",
+        "reward": "三倍枡",
         "highlight": true
     },
     {
@@ -286,12 +286,12 @@ var rewards = [
     }
 ];
 var period = {
-    "startDate": '2019-07-30',
-    "endDate": '2019-08-27'
+    "startDate": '2019-12-24',
+    "endDate": '2020-01-14'
 };
 var currentAmountEl = $('#currentAmount');
 var rewardProgressEl = $('#rewardProgress');
-var highlightCookie = $.cookie('toukenRanbuRegimentBattleHLArray');
+var highlightCookie = $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray');
 var highlightCookieArray = [];
 var today = new Date();
 var endDate = new Date(period['endDate']);
@@ -304,7 +304,7 @@ if (highlightCookie == undefined) {
         }
     });
     highlightCookieArray = highlightArray;
-    $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
+    $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray', highlightCookieArray, {expires: 30});
 }
 else {
     highlightCookieArray = highlightCookie.split(',');
@@ -367,7 +367,7 @@ function createList () {
         else {
             highlightCookieArray.push(targetAmount);
         }
-        $.cookie('toukenRanbuRegimentBattleHLArray', highlightCookieArray, {expires: 30});
+        $.cookie('toukenRanbuRegimentBattleSanchoumouHLArray', highlightCookieArray, {expires: 30});
     });
 }
 function numberWithCommas(number) {
@@ -377,7 +377,7 @@ function getDiffDays () {
     var today = new Date();
     var endDate = new Date(period['endDate']);
     var diffTime = Math.abs(endDate.getTime() - today.getTime());
-    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)) - 1;
+    var diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
     return diffDays;
 }
 function getNumbers (targetAmount, currentAmount, diffDays) {
@@ -386,7 +386,7 @@ function getNumbers (targetAmount, currentAmount, diffDays) {
     var dailyAmount = Math.floor((targetAmount - currentAmount) / diffDays);
     var dailyText = '';
     if (today < endDate) {
-        dailyText = (dailyAmount > 0) ? ('每天至少需 ' + numberWithCommas(dailyAmount) + ' 貝') : '<span class="text-white">Get!</span>';
+        dailyText = (dailyAmount > 0) ? ('每天至少需 ' + numberWithCommas(dailyAmount) + ' 魂') : '<span class="text-white">Get!</span>';
     }
     var numbers = {
         'percentage': percentage,

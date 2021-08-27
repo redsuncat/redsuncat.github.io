@@ -1,0 +1,33 @@
+body {
+    background: #F9F0DF;
+    font-family: 'Montserrat', 'Noto Sans JP', sans-serif;
+}
+.rewardProgress {
+    margin:0;
+}
+.rewardProgress li {
+    align-items: center;
+    cursor: pointer;
+    font-size: 1.2em;
+    height: auto;
+    position: relative;
+    transition: background-color .2s;
+}
+.rewardProgress .text {
+    padding-left: .5em;
+}
+.rewardProgress .text sup {
+    top: inherit;
+}
+.rewardProgress .text sub {
+    bottom: inherit;
+    font-weight: normal;
+}
+.rewardProgress .daily {
+    font-size: .85em;
+    position: absolute;
+    right: .5rem;
+}
+.likeCoin {
+    height: 200px;
+}

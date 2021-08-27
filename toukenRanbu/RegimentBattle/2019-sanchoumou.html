@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-145047577-2"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-145047577-2');
+        </script>
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({
+            google_ad_client: "ca-pub-6212257268654786",
+            enable_page_level_ads: true
+          });
+        </script>
+        <title>刀剣乱舞 - 連隊戦 - 山鳥毛 活動進度表 - 阿貓工具箱</title>
+        <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:500|Noto+Sans+JP&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/regimentBattle.min.css?v=2">
+        <link rel="stylesheet" href="css/2019-sanchoumou.min.css">
+    </head>
+    <body>
+        <div class="container mt-3">
+            <a href="/" class="btn btn-secondary">回阿貓工具箱首頁</a>
+        </div>
+        <div class="container text-center mt-2">
+            <h1>連隊戦 - 山鳥毛</h1>
+            <h2>活動進度表</h2>
+            <h3><span id="startDate"></span> ~ <span id="endDate"></span></h3>
+            <div class="row justify-content-center">
+                <div class="input-group mb-md-5 mt-md-5 mt-3 col-lg-4 col-md-8 col-sm-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">目前魂數</span>
+                    </div>
+                    <input type="text" id="currentAmount" class="form-control" placeholder="請輸入數字" aria-label="currentAmount" />
+                </div>
+                <div class="input-group mb-md-5 mt-md-5 mt-3 mb-3 col-lg-2 col-md-4 col-sm-12">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">+</span>
+                    </div>
+                    <input type="text" id="addAmount" class="form-control" aria-label="addAmount" placeholder="單場取得魂" />
+                </div>
+            </div>
+            <p>點擊各列可切換 Highlight 標示</p>
+            <ul id="rewardProgress" class="rewardProgress p-0"></ul>
+            <p class='mb-3'><a href="/" class="btn btn-secondary">回阿貓工具箱首頁</a></p>
+        </div>
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.js"></script>
+        <script src="js/2019-sanchoumou.min.js"></script>
+    </body>
+</html>

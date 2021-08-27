@@ -1,0 +1,24 @@
+body {
+    background-image: linear-gradient(to right bottom, #dae4c5, #F2F2F2, #b5c299);
+    background-attachment: fixed;
+}
+.rewardProgress li {
+    background-color: rgba(236, 243, 236, 0.6);
+    border: 1px solid #a9b3a0;
+}
+.rewardProgress li.hl {
+    background-color: rgba(66, 83, 40, .3);
+}
+.rewardProgress .progress-bar {
+    background-color: rgba(200, 195, 190, .5);
+    background-image: linear-gradient(to right, rgba(192, 200, 190, 0), rgba(192, 200, 190, 1));
+    color: #666;
+}
+.rewardProgress li.hl .progress-bar{
+    background-color: rgba(144, 243, 157, 0.5);
+    background-image: linear-gradient(to right, rgba(65, 81, 39, .4), rgba(65, 81, 39, 1));
+    color: #fff;
+}
+.rewardProgress li .get {
+    color: #415427;
+}
